@@ -4,7 +4,12 @@ p {
    
   fieldset {
     margin-bottom: 15px;
-    padding: 10px;
+    /* padding: 10px; */
+
+
+    border:solid 1px #EE6600;
+    border-radius:10px;
+    padding:20px;
      
   }
    
@@ -12,6 +17,7 @@ p {
     padding: 0px 3px;
     font-weight: bold;
     font-variant: small-caps;
+    font-size: x-large;
   }
    
   label {

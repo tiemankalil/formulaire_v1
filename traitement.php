@@ -11,23 +11,70 @@
   // Vérifie qu'il provient d'un formulaire
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $nom = $_POST["nom"]; 
-    $prenom = $_POST["prenom"]; 
-    $num_aej = $_POST["num_aej"]; 
-    $num_tel = $_POST["num_tel"]; 
-    $email = $_POST["email"];
-    $fonction = $_POST["fonction"]; 
-    $date_inscription = $_POST["date_inscription"]; 
+    
+    $nom = htmlspecialchars($_POST["nom"]);
+    $prenom = htmlspecialchars($_POST["prenom"]); 
+    $num_aej = htmlspecialchars($_POST["num_aej"]); 
+    $num_tel = htmlspecialchars($_POST["num_tel"]); 
+    $email = htmlspecialchars($_POST["email"]);
+    $fonction = htmlspecialchars($_POST["fonction"]); 
+    $date_inscription = htmlspecialchars($_POST["date_inscription"]); 
 
 
-    if (!isset($nom)){
-      die("S'il vous plaît entrez votre nom");
-    }
-     
-    if (!isset($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)){
-      die("S'il vous plaît entrez votre adresse e-mail");
-    }
+    // htmlspecialchars($_POST["nom"]);
 
+
+
+
+    // $nom = valid_donnees($_POST["nom"]); 
+    // $prenom = valid_donnees($_POST["prenom"]); 
+    // $num_aej = valid_donnees($_POST["num_aej"]); 
+    // $num_tel = valid_donnees($_POST["num_tel"]); 
+    // $email = valid_donnees($_POST["email"]);
+    // $fonction = valid_donnees($_POST["fonction"]); 
+    // $date_inscription = valid_donnees($_POST["date_inscription"]); 
+
+    // function valid_donnees($donnees){
+    //     $donnees = trim($donnees);
+    //     $donnees = stripslashes($donnees);
+    //     $donnees = htmlspecialchars($donnees);
+    //     return $donnees;
+    // }
+
+
+
+
+      error_reporting(E_ALL);
+        if(!empty($_POST))
+          {
+            $retour=1;
+            foreach($_POST as $cle=>$val)
+              {
+              if(empty($val))
+              {
+              echo 'Le champ ',$cle,' est obligatoire.<br />';
+              $retour=0;
+              }
+              }
+            if($retour==0)
+              {
+               
+              echo '<p><a href="index.php"><input type="submit" value="Retour"></a></p>';
+                die ();
+              }
+          
+          }
+
+
+    // if (!isset($nom)){
+    //   die("S'il vous plaît entrez votre nom");
+    // }
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+              die("S'il vous plaît entrez votre adresse e-mail valide");
+            }
+
+    
 
               //Ouvrir une nouvelle connexion au serveur MySQL
 
@@ -40,20 +87,19 @@
               try{
                   $dbco = new PDO("mysql:host=$servname;dbname=$dbname", $user, $pass);
                   $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                  
-                  $sql = "INSERT INTO etudiants (nom,prenom,num_aej,num_tel,email,fonction,date_inscription) 
-                                      VALUES ('$nom','$prenom','$num_aej','$num_tel','$email','$fonction','$date_inscription')";
-                  
-                  $dbco->exec($sql);
-                  echo 'Super !!! vous êtes enregistré ';
+                 
               }
               
               catch(PDOException $e){
                 echo "<p> Erreur : probleme d'access a la base de données </p>" . $e->getMessage();
               }
 
-
-
+               
+                $sql = "INSERT INTO etudiants (nom,prenom,num_aej,num_tel,email,fonction,date_inscription) 
+                          VALUES ('$nom','$prenom','$num_aej','$num_tel','$email','$fonction','$date_inscription')";
+                  
+                $dbco->exec($sql);
+                echo 'Super !!! vous êtes enregistré ';
 
   }
 ?>

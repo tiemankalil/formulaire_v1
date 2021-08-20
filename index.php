@@ -12,25 +12,25 @@
 <form  action="traitement.php" method="post"  >
     <p><i>Complétez le formulaire. Les champs marqué par </i><em>*</em> sont <em>obligatoires</em></p>
   <fieldset>
-    <legend>Information personnelles</legend>
+    <legend>Informations Personnelles</legend>
 
         <!--      
         //placeholder: indication grisée 
         //required: il faut renseigner le champs sinon la validation est bloquée
         //autofocus: le curseur est positionné dans cette case au chargement de la page -->
 
-      <label for="nom">Nom <em>*</em></label> 
-      <input id="nom" name="nom" type="text" placeholder="ex: Tieman" autofocus="" required="" ><br>
+      <label for="nom">Nom</label> 
+      <input id="nom" name="nom" type="text" placeholder="ex: Tieman" autofocus=""  ><br>
 
       <label for="prenom">Prénom</label>
-      <input id="prenom" name="prenom" type="text" placeholder="ex: kalilou" autofocus="" ><br>
+      <input id="prenom" name="prenom" type="text" placeholder="ex: kalilou"  ><br>
       
       
-      <label for="num_aej">Numéro AEJ <em>*</em></label>
-      <input id="num_aej" name="num_aej" type="number" placeholder="ex: 21334568778" autofocus="" required=""><br>
+      <label for="num_aej">Numéro AEJ</label>
+      <input id="num_aej" name="num_aej" type="number" placeholder="ex: 21334568778" ><br>
       
     
-      <label for="num_tel">Téléphone </label>
+      <label for="num_tel">Téléphone</label>
       <input id="num_tel" name="num_tel" type="tel" placeholder="ex: 07xxxxxxxx" ><br>
 
 
@@ -38,11 +38,11 @@
       // pattern: expression régulière à vérifier pour pouvoir valider
        -->
       <label for="email">Email <em>*</em></label>
-      <input id="email" name="email" type="email" placeholder="tiemankalil@gmail.com" required=""><br>
+      <input id="email" name="email" type="email" placeholder="tiemankalil@gmail.com" required><br>
  
     
          <label for="fonction">Fonction <em>*</em></label>
-        <select id="fonction"  name="fonction" required=""  >
+        <select id="fonction"  name="fonction" required>
             <option value="" disabled selected hidden>Choisissez votre fonction</option>
             <option value="ref_dig">référent Digital</option>
             <option value="dev_web">Dévéloppeur Web</option>
@@ -52,7 +52,7 @@
 
 
           <div>
-          <label for="date_inscription">Date d'inscription </label>
+          <label for="date_inscription">Date d'inscription</label>
           <input id="date_inscription" name="date_inscription" type="date" />
           </div>
   
